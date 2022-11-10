@@ -1,12 +1,11 @@
 import './App.css';
 import React, { useState, useEffect } from 'react';
 import { requestCategories } from './components/requests';
-import { Categories } from './components/categories'
-import { Questions } from './components/questions'
+import { Categories } from './components/categories';
+import { Questions } from './components/questions';
 import axios from 'axios';
 
 const App = () => {
-  const [quizUrl, setQuizUrl] = useState(null);
   const [category, setCategory] = useState([]);
   const [quiz, setQuiz] = useState([])
   const [selectedId, setSelectedId] = useState(null)
@@ -16,8 +15,8 @@ const App = () => {
       .then(res => setCategory(res.data.trivia_categories))}, []);
 
   useEffect(() => {
-    axios.get(quizUrl)
-      .then(res => setQuiz(res.data.results))}, [quizUrl]);
+    axios.get(`https://opentdb.com/api.php?amount=10&category=${selectedId}`)
+      .then(res => setQuiz(res.data.results))}, [selectedId]);
 
   return (
     <section>
@@ -26,14 +25,14 @@ const App = () => {
         {selectedId ? (
           <Questions 
             selectedId={selectedId}
-            setSelectedId={setSelectedId} />
+            setSelectedId={setSelectedId} 
+            quiz={quiz}/>
             ) : (
             <>
             {category &&
               <Categories
                 category={category}
-                setSelectedId={setSelectedId} 
-                setQuizUrl={setQuizUrl}/>}
+                setSelectedId={setSelectedId} />}
             </>
             )}
         </div>

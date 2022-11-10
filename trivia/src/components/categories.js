@@ -1,13 +1,11 @@
 
-let quizUrl = 'https://opentdb.com/api.php?amount=10&category='
-
-export const Categories = ({ category, setQuizUrl, setSelectedId }) => {
+export const Categories = ({ category, setSelectedId }) => {
 
     return(
         <div className="categories">
-        {category.map((cat) => (
+        {category.map((cat, idx) => (
             <div>
-                <button onClick={()=>{setQuizUrl(quizUrl + cat.id); setSelectedId(cat.id)}}
+                <button key={idx} onClick={()=>{setSelectedId(cat.id)}}
                 >id: {cat.id} {cat.name}</button>
             </div>
     ))}
