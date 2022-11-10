@@ -9,6 +9,7 @@ const App = () => {
   const [quizUrl, setQuizUrl] = useState(null);
   const [category, setCategory] = useState([]);
   const [quiz, setQuiz] = useState([])
+  const [selectedId, setSelectedId] = useState(null)
 
   useEffect(() => {
     requestCategories()
@@ -20,28 +21,24 @@ const App = () => {
 
   return (
     <section>
-      {category.map((cat) => (
-        <div>
-          <Categories
-            id={cat.id}
-            category={cat.name}
-            setQuizUrl={setQuizUrl} />
-        </div>
-      ))}
-      {console.log(quizUrl)}
-      {console.log(quiz)}
+      <header><h1>Trivia</h1></header>
       <div>
-        {quiz.map((ques) => (
-          <div>
-            <Questions
-              ask={ques.question} />
-          </div>
-        ))}
-      </div>
-    </section>
+        {selectedId ? (
+          <Questions 
+            selectedId={selectedId}
+            setSelectedId={setSelectedId} />
+            ) : (
+            <>
+            {category &&
+              <Categories
+                category={category}
+                setSelectedId={setSelectedId} 
+                setQuizUrl={setQuizUrl}/>}
+            </>
+            )}
+        </div>
+        </section>
+  )};
 
-
-  );
-}
 
 export default App;

@@ -6,3 +6,10 @@ export const requestCategories = () => {
     const response = axios.get(url)
     return response
 }
+
+export const requestQuestions = (id) => {
+    const url = `https://opentdb.com/api.php?amount=10&category=${id}`
+
+    const response = axios.get(url)
+    return response
+}
