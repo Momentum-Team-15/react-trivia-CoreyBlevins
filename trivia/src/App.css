@@ -1,11 +1,21 @@
-
-
-.categories {
-  display: flex;
-  flex-wrap: wrap;
-  
+.grid{
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
 }
-.btns {
-
-
+.categories{
+  width: 90%;
+}
+.questions {
+  margin: 10px;
+}
+.answers{
+  margin: 20px;
+  margin-bottom: 50px;
+}
+.score{
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+.card{
+  margin: 10px;
 }

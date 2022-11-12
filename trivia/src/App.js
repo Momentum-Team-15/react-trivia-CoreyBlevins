@@ -1,4 +1,5 @@
 import './App.css';
+import 'bulma/css/bulma.min.css'
 import React, { useState, useEffect } from 'react';
 import { requestCategories } from './components/requests';
 import { Categories } from './components/categories';
@@ -19,24 +20,26 @@ const App = () => {
       .then(res => setQuiz(res.data.results))}, [selectedId]);
 
   return (
-    <section>
-      <header><h1>Trivia</h1></header>
-      <div>
-        {selectedId ? (
+    <section className="container">
+      <header className="hero is-primary">
+        <h1 className="hero-body title has-text-centered">Trivia</h1>
+      </header>
+
+        <div>
+          {selectedId ? (
           <Questions 
             selectedId={selectedId}
             setSelectedId={setSelectedId} 
             quiz={quiz}/>
-            ) : (
-            <>
-            {category &&
-              <Categories
-                category={category}
-                setSelectedId={setSelectedId} />}
-            </>
-            )}
+          ) : (
+          <>
+          <Categories
+            category={category}
+            setSelectedId={setSelectedId} />
+          </>
+          )}
         </div>
-        </section>
+      </section>
   )};
 
 

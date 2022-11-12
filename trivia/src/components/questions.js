@@ -24,30 +24,38 @@ export const Questions = ({selectedId, setSelectedId, quiz}) => {
     return (
         <section>
             {index < 10 ? (
-        <div>
-            <button onClick={() => {setSelectedId(null)}}>Back to Categories</button>
+            <div>
+                
+                <button className="button is-link"
+                    onClick={() => {setSelectedId(null)}}>Back to Categories</button>
 
-            <h5>Question #{index+1}</h5>
-            <h3>{question}</h3>
+                <div className="questions box has-text-centered">
+                    <h5 className="questions">Question {index+1} of 10</h5>
+                    <h3 className="questions">{question}</h3>
 
-            <button onClick={() => {setIndex(index += 1); setRight(right += 1)}}>{correct}</button>
+                    <button className="answers button is-info"
+                        onClick={() => {setIndex(index += 1); setRight(right += 1)}}>{correct}</button>
 
-            {incorrects.map((incorrect, idx) => (
-                <button key={idx} onClick={() => {setIndex(index += 1); setWrong(wrong += 1)}}
-                >{incorrect.replace(/[^a-zA-Z0-9 ?%]/g, '').replace(/quot/g, '"').replace(/039/g, "'")}</button>
-            ))}
+                    {incorrects.map((incorrect, idx) => (
+                    <button className="answers button is-info"
+                        key={idx} onClick={() => {setIndex(index += 1); setWrong(wrong += 1)}}
+                        >{incorrect.replace(/[^a-zA-Z0-9 ?%]/g, '').replace(/quot/g, '"').replace(/039/g, "'")}
+                    </button>
+                    ))}
+                    <progress className="progress is-success" value={right} max="10"></progress>
+                    <progress className="progress is-danger" value={wrong} max="10"></progress>
 
-            <p>Right: {right}</p>
-            <p>Wrong: {wrong}</p>
-        </div>
-        ) : (
+
+                </div>
+            </div>
+
+            ) : (
             <FinalScore 
             setSelectedId={setSelectedId}
             right={right}
             wrong={wrong}
-            quiz={quiz}
-            />
-        )}
+            quiz={quiz}/>
+            )}
         </section>
     )
 }

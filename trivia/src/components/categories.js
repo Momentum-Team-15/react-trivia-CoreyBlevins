@@ -2,12 +2,17 @@
 export const Categories = ({ category, setSelectedId }) => {
 
     return(
-        <div className="categories">
+        <section className="box">
+            <h2 className="title is-4 has-text-centered">Categories:</h2>
+        <div className="grid">
+
         {category.map((cat, idx) => (
-            <div>
-                <button className="btns" key={idx} onClick={()=>{setSelectedId(cat.id)}}
-                >id: {cat.id} {cat.name}</button>
+            <div className="block" key={idx}>
+                <button className="categories button is-info" key={idx} onClick={()=>{setSelectedId(cat.id)}}
+                >{cat.name}</button>
             </div>
     ))}
         </div>
+        </section>
+        
 )}
