@@ -8,7 +8,7 @@ export const Categories = ({ category, setSelectedId }) => {
 
         {category.map((cat, idx) => (
             <div className="block" key={idx}>
-                <button className="categories button is-info" key={idx} onClick={()=>{setSelectedId(cat.id)}}
+                <button className="categories button is-info" key={idx} onClick={()=>setSelectedId(cat.id)}
                 >{cat.name}</button>
             </div>
     ))}

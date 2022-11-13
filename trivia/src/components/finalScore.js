@@ -3,7 +3,7 @@ export const FinalScore = ({setSelectedId, right, wrong, quiz}) => {
     return (
         <div>
             <button className="button is-link"
-                onClick={() => {setSelectedId(null)}}>Back to Categories
+                onClick={() => setSelectedId(null)}>Back to Categories
             </button>
 
             <h2 className="title is-4 has-text-centered">{quiz[0].category}</h2>
