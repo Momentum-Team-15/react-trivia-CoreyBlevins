@@ -8,7 +8,7 @@ export const requestCategories = () => {
 }
 
 export const requestQuestions = (id) => {
-    const url = `https://opentdb.com/api.php?amount=10&category=${id}`
+    const url = `https://opentdb.com/api.php?amount=11&category=${id}`
 
     const response = axios.get(url)
     return response
