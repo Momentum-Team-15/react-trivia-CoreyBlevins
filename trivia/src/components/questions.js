@@ -12,11 +12,11 @@ export const Questions = ({setSelectedId, quiz}) => {
         .replace(/[^a-zA-Z0-9 ?%]/g, '').replace(/quot/g, '"').replace(/039/g, "'") ? 
         (setIndex(index += 1), setRight(right += 1)) : (setIndex(index += 1), setWrong(wrong += 1));
     
-    const question = (quiz[index].question.replace(/[^a-zA-Z0-9 ?%]/g, '').replace(/quot/g, '"').replace(/039/g, "'"));
-    const answers = (quiz[index].incorrect_answers.concat(quiz[index].correct_answer)).sort(() => Math.random() - 0.5);
-
-    return (
-        <section>
+        const question = (quiz[index].question.replace(/[^a-zA-Z0-9 ?%]/g, '').replace(/quot/g, '"').replace(/039/g, "'"));
+        const answers = (quiz[index].incorrect_answers.concat(quiz[index].correct_answer)).sort(() => Math.random() - 0.5);
+        
+        return (
+            <section>
             {index < 10 ? (
                 <div>
                 

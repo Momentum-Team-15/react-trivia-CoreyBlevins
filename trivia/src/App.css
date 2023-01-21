@@ -19,3 +19,16 @@
 .card{
   margin: 10px;
 }
+
+.menu {
+  position: absolute;
+  z-index: 1;
+  border: 1px solid lightgrey;
+  margin: 30px 20px;
+  width: 150px;
+}
+
+.menu li button {
+  width: 100%;
+}
+
