@@ -27,12 +27,21 @@ const App = () => {
         </header>
 
         <div>
-          {selectedId ? (
+          {selectedId && quiz.length > 0 ? (
           <Questions 
             selectedId={selectedId}
             setSelectedId={setSelectedId} 
             quiz={quiz} />
-          ) : (
+          ) : selectedId && quiz.length === 0 ? ( 
+          <>
+          <Categories
+            error={true}
+            category={category}
+            setSelectedId={setSelectedId}
+            difficulty={difficulty}
+            setDifficulty={setDifficulty} />
+          </>
+          ): (
           <>
           <Categories
             category={category}

@@ -1,10 +1,11 @@
 import { useState } from 'react';
 
-export const Categories = ({ category, setSelectedId, difficulty, setDifficulty }) => {
+export const Categories = ({ category, setSelectedId, difficulty, setDifficulty, error }) => {
     const [open, setOpen] = useState(false)
 
     return(
         <section className="box">
+            <div className="is-flex is-justify-content-space-between">
             <div className="dropdown">
                 <button className="button is-link" onClick={()=>setOpen(!open)}>Difficulty</button>
             {open && (
@@ -24,6 +25,11 @@ export const Categories = ({ category, setSelectedId, difficulty, setDifficulty 
                 </ul>
             )}
             </div>
+            
+            {error && <p>Sorry, not enough questions in that difficulty.</p>}
+            <p>Difficulty: {difficulty} {difficulty === "" && "random"}</p>
+            </div>
+
 
             <h2 className="title is-4 has-text-centered">Categories:</h2>
             <div className="grid">
